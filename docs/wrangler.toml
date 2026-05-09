@@ -1,0 +1,17 @@
+name = "json-repair"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Route for your worker
+routes = [
+  { pattern = "https://json-repair.sohamx99.workers.dev/*", zone_name = "sohamx99.workers.dev" }
+]
+
+# Assets configuration for serving static files
+[assets]
+directory = "./"
+binding = "ASSETS"
+
+# Optional: Add environment variables if needed
+# [vars]
+# API_URL = "https://mangiucugna.pythonanywhere.com/api/repair-json"
