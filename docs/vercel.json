@@ -1,5 +1,7 @@
 {
   "version": 2,
+  "buildCommand": "",
+  "outputDirectory": ".",
   "builds": [
     {
       "src": "app.py",
