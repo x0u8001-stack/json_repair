@@ -1,10 +1,8 @@
 let timeoutId;
 let controller;
 const DEBOUNCE_MS = 500;
-// Use relative URL for Cloudflare Workers, fallback to PythonAnywhere for GitHub Pages
-const API_URL = window.location.hostname.includes('workers.dev') 
-    ? "/api/repair-json" 
-    : "https://mangiucugna.pythonanywhere.com/api/repair-json";
+// Use relative URL for Vercel deployment
+const API_URL = "/api/repair-json";
 const DEFAULT_SCHEMA_MODE = 'standard';
 const SALVAGE_SCHEMA_MODE = 'salvage';
 const SCHEMA_REPAIR_MODES = new Set([DEFAULT_SCHEMA_MODE, SALVAGE_SCHEMA_MODE]);
