@@ -7,26 +7,33 @@
 <body>
 <script>
 const params = new URLSearchParams(window.location.search);
-const json = params.get('json');
+const inputJson = params.get('json');
 const schema = params.get('schema');
 const mode = params.get('mode') || 'standard';
 
-if (!json) {
-    document.body.textContent = '';
-    document.documentElement.innerHTML = '';
+if (!inputJson) {
+    document.body.textContent = JSON.stringify({input: null, output: null}, null, 2);
 } else {
     fetch('https://mangiucugna.pythonanywhere.com/api/repair', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({json, schema, mode})
+        body: JSON.stringify({json: inputJson, schema, mode})
     })
     .then(r => r.json())
     .then(data => {
-        document.body.textContent = data.json || '';
-        document.documentElement.innerHTML = '<pre>' + (data.json || '') + '</pre>';
+        const response = {
+            input: inputJson,
+            output: data.json || null
+        };
+        document.body.textContent = JSON.stringify(response, null, 2);
     })
     .catch(e => {
-        document.body.textContent = JSON.stringify({error: e.message});
+        const response = {
+            input: inputJson,
+            output: null,
+            error: e.message
+        };
+        document.body.textContent = JSON.stringify(response, null, 2);
     });
 }
 </script>
