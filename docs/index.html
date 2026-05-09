@@ -1,231 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="google-site-verification" content="8U1Z8NsGTRyRhB9MJqZGREeby67Q4jv1Y82FMtwLjws" /> <!-- pragma: allowlist secret -->
-        <title>JSON Repair & Schema Validator — Fix Broken JSON Online</title>
-        <meta name="description" content="Repair malformed JSON online, validate with optional JSON Schema, and format output with json_repair. Fix syntax errors and enforce schema-guided types/defaults.">
-        <meta name="keywords" content="json repair, json fixer, json validator, json schema validator, json schema validation, fix malformed json, json formatter, llm json, json linter">
-        <meta name="robots" content="index, follow">
-        <link rel="canonical" href="https://mangiucugna.github.io/json_repair/">
-        <link rel="alternate" hreflang="en" href="https://mangiucugna.github.io/json_repair/">
-        <link rel="alternate" hreflang="zh-CN" href="https://mangiucugna.github.io/json_repair/index.zh.html">
-        <link rel="alternate" hreflang="x-default" href="https://mangiucugna.github.io/json_repair/">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="JSON Repair & Schema Validator — Fix Broken JSON Online">
-        <meta property="og:description" content="Free online JSON repair, formatting, and JSON Schema validation. Paste malformed JSON and optionally enforce schema-guided fixes with full logs.">
-        <meta property="og:url" content="https://mangiucugna.github.io/json_repair/">
-        <meta property="og:image" content="https://raw.githubusercontent.com/mangiucugna/json_repair/main/banner.png">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="JSON Repair & Schema Validator — Fix Broken JSON Online">
-        <meta name="twitter:description" content="Validate malformed JSON with optional JSON Schema, repair it, and format it directly in your browser.">
-        <meta name="twitter:image" content="https://raw.githubusercontent.com/mangiucugna/json_repair/main/banner.png">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
-        <link rel="stylesheet" href="styles.css">
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@graph": [
-                    {
-                        "@type": "WebSite",
-                        "name": "JSON Repair Demo",
-                        "url": "https://mangiucugna.github.io/json_repair/",
-                        "description": "Free online JSON repair, formatting, and JSON Schema validation tool powered by the json_repair Python package.",
-                        "inLanguage": "en",
-                        "potentialAction": {
-                            "@type": "SearchAction",
-                            "target": "https://mangiucugna.github.io/json_repair/?json={json}",
-                            "query-input": "required name=json"
-                        }
-                    },
-                    {
-                        "@type": "SoftwareApplication",
-                        "name": "json_repair",
-                        "applicationCategory": "DeveloperApplication",
-                        "applicationSubCategory": "JSON validator, JSON Schema validator, and fixer",
-                        "operatingSystem": "Any",
-                        "softwareVersion": "0.55.0",
-                        "description": "Python utility to repair malformed JSON strings and apply schema-guided validation/coercion for API payloads and LLM responses.",
-                        "downloadUrl": "https://pypi.org/project/json-repair/",
-                        "offers": {
-                            "@type": "Offer",
-                            "price": "0",
-                            "priceCurrency": "USD"
-                        },
-                        "url": "https://github.com/mangiucugna/json_repair"
-                    }
-                ]
-            }
-        </script>
-    </head>
-    <body>
-        <noscript>
-            <div class="notice">JavaScript is required to repair and format JSON in real time.</div>
-        </noscript>
-        <div class="language-switch">
-            <strong>English</strong> | <a href="index.zh.html" rel="alternate" hreflang="zh-CN">中文</a>
-        </div>
-        <div id="locale-banner" class="language-banner hidden" role="status" aria-live="polite">
-            <span id="locale-text">We noticed your browser is in Chinese. Switch to the Chinese version?</span>
-            <div class="banner-actions">
-                <a id="locale-switch" class="button" href="index.zh.html" rel="alternate" hreflang="zh-CN">Switch to 中文</a>
-                <button type="button" id="dismiss-locale">No thanks</button>
-            </div>
-        </div>
-        <header>
-            <p class="eyebrow">Open source · Free · No signup</p>
-            <h1>JSON Repair & Schema Validation — fix malformed JSON online</h1>
-            <p class="lede">Paste broken JSON (even messy LLM output), optionally provide a JSON Schema, and instantly get valid, formatted output with a detailed log of every fix.</p>
-            <div class="hero-actions">
-                <a class="button-like primary" href="https://github.com/mangiucugna/json_repair/" target="_blank" rel="noopener">Star on GitHub</a>
-                <a class="button-like secondary" href="https://github.com/mangiucugna/json_repair/issues/new/choose" target="_blank" rel="noopener">Share a bad sample</a>
-            </div>
-            <p class="hero-note">If this demo solves a real problem for you, a GitHub Star is the clearest way to help more people find it.</p>
-        </header>
-        <main>
-            <section>
-                <h2>What the JSON Repair demo does</h2>
-                <ul>
-                    <li>Repairs malformed JSON: fixes trailing commas, missing quotes, stray comments, and incomplete objects.</li>
-                    <li>Validates with JSON Schema: enforce expected types, defaults, and structural constraints when schema guidance is provided.</li>
-                    <li>Validates and formats: outputs pretty-printed JSON you can copy straight into your code or API calls.</li>
-                    <li>Transparent logging: see every repair step and context so you can trust the output.</li>
-                    <li>Built on <a href="https://github.com/mangiucugna/json_repair/" target="_blank" rel="noopener">json_repair</a>, the Python package available on <a href="https://pypi.org/project/json-repair/" target="_blank" rel="noopener">PyPI</a>.</li>
-                </ul>
-                <p class="disclaimer">API is hosted on PythonAnywhere’s free tier; if you hit quota, try again later or run the package locally.</p>
-            </section>
-            <section class="how-to">
-                <h2>How to repair JSON online</h2>
-                <ol>
-                    <li>Paste malformed JSON (from webhooks, logs, or LLM responses) into the left box.</li>
-                    <li>Optionally paste a JSON Schema to validate/coerce fields (for example string-to-integer conversion).</li>
-                    <li>We validate, repair, and format automatically as you type.</li>
-                    <li>Copy the valid JSON on the right or review the “repair actions” log for debugging.</li>
-                </ol>
-            </section>
-            <section>
-                <h2>JSON Schema validation online</h2>
-                <p>Use the optional JSON Schema input to validate repaired JSON against required properties, value types, and constraints before you copy results into production systems.</p>
-                <ul>
-                    <li>Useful for API contracts, typed pipelines, and AI extraction workflows.</li>
-                    <li>Supports schema-guided coercion (for example, converting <code>"1"</code> into <code>1</code> for integer fields).</li>
-                    <li>Keeps behavior transparent with repair logs that show what changed and where.</li>
-                </ul>
-            </section>
-            <section class="feature-grid">
-                <div>
-                    <h3>Why developers use json_repair</h3>
-                    <ul>
-                        <li>Handles common AI issues: hallucinated text in JSON, wrong booleans/null, broken arrays.</li>
-                        <li>Drop-in replacement for <code>json.loads()</code> when you need resilient parsing.</li>
-                        <li>Ideal for webhook payloads, schema-validated pipelines, and prompt engineering workflows.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Prefer code?</h3>
-                    <p>Install the package locally and bypass API limits.</p>
-                    <pre><code>pip install json-repair
-python -m json_repair</code></pre>
-                </div>
-            </section>
-            <div class="container">
-                <div class="textarea-container">
-                    <label for="input-json">Input JSON (broken, partial, or LLM output)</label>
-                    <textarea id="input-json" aria-label="Input JSON" placeholder="Paste malformed JSON here..."></textarea>
-                    <p class="helper-text">Examples we fix: trailing commas, missing quotes, stray comments, invalid true/false/null, incomplete objects.</p>
-                </div>
-                <div class="textarea-container">
-                    <label for="output-json">Repaired JSON (validated + formatted)</label>
-                    <textarea id="output-json" aria-label="Repaired JSON" readonly placeholder="Formatted JSON will appear here..."></textarea>
-                </div>
-            </div>
-            <section id="success-support" class="support-card hidden" aria-live="polite">
-                <h2>Did this save you time?</h2>
-                <p>If this repair solved a real problem, the fastest way to help is to star the repo, share it, or send a broken sample we can learn from.</p>
-                <div class="support-actions">
-                    <a class="button-like primary" href="https://github.com/mangiucugna/json_repair/" target="_blank" rel="noopener">Star on GitHub</a>
-                    <button type="button" id="copy-repo-link">Copy repo link</button>
-                    <a class="button-like secondary" href="https://github.com/mangiucugna/json_repair/issues/new/choose" target="_blank" rel="noopener">Report a bad sample</a>
-                </div>
-                <p id="support-copy-status" class="helper-text support-status"></p>
-                <p class="helper-text">If your team relies on it in production, GitHub Sponsors helps keep maintenance predictable.</p>
-            </section>
-            <div class="textarea-container schema-container">
-                <label for="schema-json">Optional JSON Schema (object or boolean)</label>
-                <textarea id="schema-json" aria-label="JSON Schema" placeholder='{"type":"object","properties":{"value":{"type":"integer"}},"required":["value"]}'></textarea>
-                <label for="schema-repair-mode">Schema repair mode</label>
-                <select id="schema-repair-mode" aria-label="Schema repair mode">
-                    <option value="standard" selected>standard (default)</option>
-                    <option value="salvage">salvage (best-effort array/object salvage)</option>
-                </select>
-                <p class="helper-text">Optional. Provide a JSON Schema to guide coercions, defaults, and validation. Leave empty to use normal repair mode.</p>
-                <p class="schema-note">Use the share button to copy a reproducible permalink. The address bar updates live as you edit.</p>
-                <div class="helper-actions">
-                    <button type="button" id="copy-share-link">Copy share link</button>
-                    <p id="share-copy-status" class="helper-text share-status" aria-live="polite"></p>
-                </div>
-            </div>
-            <div class="textarea-container">
-                <label for="log-output">Repair actions performed</label>
-                <textarea id="log-output" aria-label="Repair actions log" readonly placeholder="Logs will appear here..."></textarea>
-            </div>
-            <section>
-                <h2>FAQ: fixing JSON for production</h2>
-                <div class="faq">
-                    <h3>Does this work for AI/LLM responses?</h3>
-                    <p>Yes. json_repair is tuned for messy model output: it removes prose, repairs syntax, and keeps structured data intact.</p>
-                    <h3>Can I validate against a JSON Schema here?</h3>
-                    <p>Yes. Paste a JSON Schema in the optional schema box to apply schema-guided validation and type coercion while repairing malformed JSON.</p>
-                    <h3>Can I trust the repaired JSON?</h3>
-                    <p>Every action is logged so you can review context before sending payloads to production systems.</p>
-                    <h3>What if I need offline or private processing?</h3>
-                    <p>Install the library locally (<code>pip install json-repair</code>) to repair sensitive JSON without hitting the public API.</p>
-                    <h3>How do I report issues or request features?</h3>
-                    <p>Open an issue on <a href="https://github.com/mangiucugna/json_repair/issues" target="_blank" rel="noopener">GitHub</a> and include a sample payload; this page URL is a permalink you can reference.</p>
-                </div>
-            </section>
-        </main>
-        <footer>
-            <p><strong>Support:</strong> <a href="https://github.com/mangiucugna/json_repair/" target="_blank" rel="noopener">Star the repo</a> · <a href="https://github.com/mangiucugna/json_repair/issues/new/choose" target="_blank" rel="noopener">Report a bad sample</a> · <a href="https://github.com/sponsors/mangiucugna" target="_blank" rel="noopener">Sponsor maintenance</a> · <strong>Source:</strong> <a href="https://github.com/mangiucugna/json_repair/" target="_blank" rel="noopener">json_repair on GitHub</a></p>
-        </footer>
-        <script src="index.js"></script>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-B77ZM0PG9W"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Repair API</title>
+</head>
+<body>
+<script>
+const params = new URLSearchParams(window.location.search);
+const json = params.get('json');
+const schema = params.get('schema');
+const mode = params.get('mode') || 'standard';
 
-            gtag('config', 'G-B77ZM0PG9W');
-        </script>
-        <script>
-            (function() {
-                const banner = document.getElementById('locale-banner');
-                const dismissBtn = document.getElementById('dismiss-locale');
-                const localeText = document.getElementById('locale-text');
-                const localeSwitch = document.getElementById('locale-switch');
-                if (!banner || !dismissBtn) return;
-                const dismissed = localStorage.getItem('jsonRepairLocalePromptDismissed') === '1';
-                const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-                if (!dismissed && userLang.startsWith('zh')) {
-                    if (localeText) {
-                        localeText.textContent = '检测到您的浏览器语言为中文，是否切换到中文版？';
-                    }
-                    if (localeSwitch) {
-                        localeSwitch.textContent = '切换到中文版';
-                    }
-                    if (dismissBtn) {
-                        dismissBtn.textContent = '暂不切换';
-                        dismissBtn.setAttribute('aria-label', '暂不切换到中文版');
-                    }
-                    banner.classList.remove('hidden');
-                }
-                dismissBtn.addEventListener('click', () => {
-                    banner.classList.add('hidden');
-                    localStorage.setItem('jsonRepairLocalePromptDismissed', '1');
-                });
-            })();
-        </script>
-    </body>
+if (!json) {
+    document.body.textContent = '';
+    document.documentElement.innerHTML = '';
+} else {
+    fetch('https://mangiucugna.pythonanywhere.com/api/repair', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({json, schema, mode})
+    })
+    .then(r => r.json())
+    .then(data => {
+        document.body.textContent = data.json || '';
+        document.documentElement.innerHTML = '<pre>' + (data.json || '') + '</pre>';
+    })
+    .catch(e => {
+        document.body.textContent = JSON.stringify({error: e.message});
+    });
+}
+</script>
+</body>
 </html>
