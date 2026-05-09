@@ -1,21 +1,8 @@
 {
-  "version": 2,
-  "buildCommand": "",
-  "outputDirectory": "docs",
-  "builds": [
+  "rewrites": [
     {
-      "src": "docs/app.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/repair-json",
-      "dest": "/docs/app.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/docs/$1"
+      "source": "/api/repair-json",
+      "destination": "/docs/app.py"
     }
   ]
 }
